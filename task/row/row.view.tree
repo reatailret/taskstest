@@ -1,0 +1,24 @@
+$my_tasks_task_row $mol_view
+	minimal_height 104
+	minimal_width 104
+	task $my_tasks_task
+		kind => kind
+		title => title
+		description => description
+		assignee => assignee
+		status => status
+		start => task_start
+		duration => task_duration
+		end => task_end
+	sub /
+		<= Group $mol_view sub /
+			<= Main $mol_view sub /
+				<= Kind $mol_view sub / <= kind
+				<= Assignee $mol_view sub / <= assignee
+				<= Status $mol_view sub / <= status
+			<= Title $mol_view sub / <= title
+			<= Addon $mol_view sub /
+				<= Start $mol_view sub / <= start \
+				<= Duration $mol_view sub / <= duration \
+				<= End $mol_view sub / <= end \
+		<= Description $mol_view sub / <= description

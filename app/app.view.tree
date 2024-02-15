@@ -1,0 +1,52 @@
+$my_tasks_app $mol_page
+	title \10K Tasks × 10 Fields × 10 Ups/Sec × 6 Lists
+	tools /
+		<= Lights $mol_lights_toggle
+		<= Source $mol_link_source
+			uri \https://github.com/nin-jin/tasks
+	plugins /
+		<= Theme $mol_theme_auto
+	auto /
+		<= updating null
+	filters /$my_tasks_column
+		*
+			title \All Tasks
+			sort /string
+				\-created
+			filter *string
+		*
+			title \Last Updated
+			sort /string
+				\-updated
+			filter *string
+		*
+			title \New Created
+			sort /string
+				\-created
+			filter *string
+				status \NEW
+		*
+			title \Deadline
+			sort /string
+				\+end
+			filter *string
+				status \WIP
+		*
+			title \Last Done
+			sort /string
+				\-end
+			filter *string
+				status \DONE
+		*
+			title \Big Fails
+			sort /string
+				\-duration
+			filter *string
+				status \FAIL
+	Body_content <= Columns $mol_book2
+		pages <= columns /
+			<= Column*all $my_tasks_list_column
+				title <= column_title* \All tasks
+				list <= list $my_tasks_list
+				sort <= column_sort* /string
+				filter <= column_filter* *string

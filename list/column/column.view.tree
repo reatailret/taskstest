@@ -1,0 +1,15 @@
+$my_tasks_list_column $mol_page
+	list $my_tasks_list
+	sort /string
+	filter *string
+	
+	Body_content <= viewPort $milkywaystd_scroll_VirtualScrollViewport
+		itemRendererFactory <= itemRendererFactory null
+		itemHeight 50
+		minBufferPx 400
+		maxBufferPx 800
+		style *
+			height \100%
+		pre_sub /
+			<= pull null
+		post_sub /
